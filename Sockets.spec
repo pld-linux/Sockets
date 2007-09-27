@@ -26,6 +26,10 @@ BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+C++ class library wrapping the berkeley sockets C API.
+Features include, but are not limited to, SSL support, IPv6 support,
+tcp and udp sockets, sctp sockets, http protocol, highly customizable
+error handling.
 
 %description -l pl.UTF-8
 
