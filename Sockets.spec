@@ -11,7 +11,7 @@ Summary(pl.UTF-8):	Biblioteka gniazd C++
 Name:		Sockets
 Version:	2.1.8
 Release:	0.1
-License:	GPL
+License:	GPL v2+
 Group:		Development/Libraries
 Source0:	http://www.alhem.net/Sockets/%{name}-%{version}.tar.gz
 # Source0-md5:	f285cfcd3558e83f4c2b2c5b114d98d8
@@ -23,6 +23,8 @@ URL:		http://www.alhem.net/Sockets/
 BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	sed >= 4.0
+Requires:	libstdc++-devel
+Requires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
