@@ -6,7 +6,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
-
+#
 Summary:	C++ Sockets Library
 Summary(pl.UTF-8):	Biblioteka gniazd C++
 Name:		Sockets
@@ -26,15 +26,18 @@ BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-C++ class library wrapping the berkeley sockets C API.
-Features include, but are not limited to, SSL support, IPv6 support,
-tcp and udp sockets, sctp sockets, http protocol, highly customizable
-error handling.
+C++ class library wrapping the Berkeley sockets C API. Features
+include, but are not limited to, SSL support, IPv6 support, TCP and
+UDP sockets, SCTP sockets, HTTP protocol, highly customizable error
+handling.
 
 %description -l pl.UTF-8
+Biblioteka klas C++ obudowująca berkeleyowskie API C gniazd.
+Możliwości obejmują m.in. obsługę SSL, obsługę IPv6, gniazda TCP i
+UDP, gniazda SCTP, protokół HTTP, elastyczną obsługę błędów.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %{__make}
