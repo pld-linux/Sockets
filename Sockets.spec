@@ -1,6 +1,5 @@
 #
 # TODO:
-#	- pass CFLAGS
 #	- package docs
 #	- build shared library
 #
@@ -23,6 +22,7 @@ Source2:	http://www.alhem.net/Sockets/tutorial/%{name}-tutorial.tar.gz
 URL:		http://www.alhem.net/Sockets/
 BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,8 +39,12 @@ UDP, gniazda SCTP, protokół HTTP, elastyczną obsługę błędów.
 %prep
 %setup -q
 
+sed -i -e 's,\$(PREFIX)/lib$,$(PREFIX)/%{_lib},' Makefile
+
 %build
-%{__make}
+%{__make} \
+	CXX="%{__cxx}" \
+	CFLAGS='%{rpmcxxflags} -Wall $(INCLUDE) -MD -D_VERSION=\"$(VERSION)\" -DLINUX'
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/Sockets-config
 %{_includedir}/Sockets
-%{_libdir}/lib*.a
+%{_libdir}/libSockets.a
 %{_examplesdir}/%{name}-%{version}
